@@ -14,20 +14,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.mrobson.example.amq.producer;
+package org.mrobson.example.amq.camel;
+
 
 import org.apache.camel.Exchange;
-import org.apache.camel.Processor;
 
 /**
  * @author <a href="mailto:mrobson@redhat.com">Matthew Robson</a>
  * 
  * Jun 4, 2015
  */
-public class MyProcessor implements Processor {
-	  public void process(Exchange exchange) throws Exception {
-		  String payload = exchange.getOut().getBody(String.class);
-		  System.out.println(payload);
-		  exchange.getOut().setBody("Changed body");
-	  }
+public class MyConsumer {
+    public void modify(Exchange exchange) {
+    	String body = exchange.getIn().getBody(String.class);
+        exchange.getOut().setBody("My name is " + body + " \n");                                                                                                                                                                                         
+    }
 }

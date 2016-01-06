@@ -1,14 +1,14 @@
-﻿ActiveMQ Producer and Consumer using Camel (part 3)
-====================================================
+﻿Fabric8 ActiveMQ Camel Request and Reply
+========================================
 Author: Matt Robson
 
-Technologies: Fuse, Fabric8, ActiveMQ, Camel, fabric8-maven-plugin, Profiles, Request/Reply
+Technologies: Fuse, Fabric8, ActiveMQ, Camel (Request/Reply), fabric8-maven-plugin, Profiles
 
 Product: Fuse 6.1, ActiveMQ 6.1
 
 Breakdown                                                                                                                     
 ---------                                                                                                                     
-This is a code and profile based example to demonstrate how to build on the Fabric ensemble and broker network you created in part 1, 'fuse-fabric8-getting-started' and part 2, 'fuse-fabric8-ssh-containers'.  We demonstrate how to create an ActiveMQ producer and consumer in Camel that utilizes the ‘amq:’ fabric discovery endpoint. We will also demonstrate how to deploy the code to our fabric using the fabric8-maven-plugin.
+This is a code and profile based example to demonstrate how to implement and deploy a basic Camel Request Reply route in Fabric.
 
 For more information see:
 
@@ -32,11 +32,11 @@ Build and Deploy
 
 1) clone the project
 
-        git clone https://github.com/mrobson/fuse-fabric8-amq.git
+        git clone https://github.com/mrobson/fuse-fabric8-amq-camel-request-reply.git
 
 2) change to project directory
 
-        cd fuse-fabric8-amq/
+        cd fuse-fabric8-camel-amq
 
 3) build the project
 
@@ -46,10 +46,7 @@ Build and Deploy
 
 	mvn fabric8:deploy -Dfabric8.jolokiaUrl=http://fusefabric1.lab.com:8181/jolokia
 
-This will deploy both producer and consumer profiles.
-
-	fabric-amq-producer
-	fabric-amq-consumer
+This will deploy the request reply camel route JARs to the Fabric maven proxy and upload the required profiles to the specificed version.
 
 The first, 'fabric-amq-producer', is a basic camel route that uses a timer to generate an event every second, passes it to a bean that sets a message and date and then finishes by sending it to an ActiveMQ queue.  The second, 'fabric-amq-consumer', is also a basic camel route that then consumes from the queue and writes the message out to a file.
 

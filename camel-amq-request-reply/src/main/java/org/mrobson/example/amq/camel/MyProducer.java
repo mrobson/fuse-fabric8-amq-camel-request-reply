@@ -14,9 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.mrobson.example.amq.producer;
+package org.mrobson.example.amq.camel;
 
-
+import java.util.Date;
 import org.apache.camel.Exchange;
 
 /**
@@ -24,9 +24,9 @@ import org.apache.camel.Exchange;
  * 
  * Jun 4, 2015
  */
-public class MyConsumer {
-    public void validate(Exchange exchange) {
-        // only motors are valid parts in this simple test bean
-        exchange.getOut().setBody("Valid");                                                                                                                                                                                         
-    }
+public class MyProducer {
+	public void produce(Exchange exchange) {
+		String body = exchange.getIn().getBody(String.class);
+		exchange.getOut().setBody(body + " ? Asked at: " + new Date() + " \n");
+	}
 }

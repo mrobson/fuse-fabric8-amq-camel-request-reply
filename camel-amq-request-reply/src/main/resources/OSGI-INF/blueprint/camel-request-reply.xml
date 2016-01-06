@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/*
+ * JBoss, Home of Professional Open Source
+ * Copyright 2015, Red Hat, Inc. and/or its affiliates, and individual
+ * contributors by the @authors tag. See the copyright.txt in the
+ * distribution for a full listing of individual contributors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */-->
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+	xmlns:camel="http://camel.apache.org/schema/blueprint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0"
+	xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+	
+<cm:property-placeholder id="producer" update-strategy="reload" persistent-id="org.mrobson.example.amq.camel1">
+	<cm:default-properties>
+		<cm:property name="firstname" value="Bill"/>
+		<cm:property name="question" value="What is your name?"/>
+		<cm:property name="hostname" value="mrobson"/>
+		<cm:property name="noname" value="MattR"/>
+	</cm:default-properties>
+</cm:property-placeholder>
+
+<camelContext trace="false" xmlns="http://camel.apache.org/schema/blueprint">
+	<route id="produce-incoming1">
+		<from uri="timer://productionTimer?fixedRate=true&amp;period=1000"/>
+		<transform>
+			<simple>{{question}}</simple>
+		</transform>
+		<bean ref="myProducer" method="produce"/>
+		<log message="${body}"/>
+		<to uri="amq:queue:com.redhat.incoming1"/>
+	</route>
+
+	<route id="initial-consume-reply1">
+		<from uri="amq:queue:com.redhat.incoming1"/>
+		<to uri="amq:queue:com.redhat.service1?replyTo=com.redhat.service1.{{hostname}}.reply&amp;replyToType=Exclusive&amp;deliveryPersistent=false&amp;requestTimeout=35000" pattern="InOut"/>
+	</route>
+
+	<route id="consume-process-reply1">
+		<from uri="amq:queue:com.redhat.service1"/>
+			<choice>
+				<when>
+					<simple>${body} contains 'What is your name?'</simple>
+					<transform>
+						<simple>{{name}}!</simple>
+					</transform>
+					<bean ref="myConsumer" method="modify"/>
+				</when>
+				<otherwise>
+					<transform>
+						<simple>If you don't ask me my name, I'm not going to tell you!</simple>
+					</transform>
+				</otherwise>
+			</choice>
+	</route>
+</camelContext>
+<bean id="myProducer" class="org.mrobson.example.amq.camel.MyProducer" />
+<bean id="myConsumer" class="org.mrobson.example.amq.camel.MyConsumer"/>
+</blueprint>
