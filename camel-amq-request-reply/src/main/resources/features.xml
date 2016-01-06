@@ -15,7 +15,7 @@
 	<repository>mvn:org.apache.activemq/activemq-karaf/5.9.0.redhat-610379/xml/features</repository>
 	<!--repository>mvn:io.fabric8/fabric8-karaf/1.0.0-SNAPSHOT/xml/features</repository-->
 
-	<feature name="fuse-fabric8-amq-camel" version="${project.version}" resolver="(obr)">
+	<feature name="fuse-fabric8-amq-camel-rr" version="${project.version}" resolver="(obr)">
 		<feature>camel-blueprint</feature>
 		<feature>camel-jms</feature>
 		<feature>fabric-camel</feature>

@@ -34,10 +34,10 @@
 		<fabric8.profile>camel-request-reply</fabric8.profile>
 		<fabric8.parentProfiles>feature-camel</fabric8.parentProfiles>
 		<fabric8.featureRepos>mvn:org.mrobson.example.fabric8-amq/camel-request-reply/1.0-SNAPSHOT/xml/features</fabric8.featureRepos>
-		<fabric8.baseVersion>77.05</fabric8.baseVersion>
-		<fabric8.profileVersion>77.05</fabric8.profileVersion>
-		<fabric8.features>camel-jms camel-blueprint fabric-camel mq-fabric-camel activemq-client</fabric8.features>
-		<fabric8.includeArtifact>false</fabric8.includeArtifact>
+		<fabric8.baseVersion>1.0</fabric8.baseVersion>
+		<fabric8.profileVersion>1.1</fabric8.profileVersion>
+		<fabric8.features>fuse-fabric8-amq-camel-rr</fabric8.features>
+		<fabric8.includeArtifact>true</fabric8.includeArtifact>
 		<fabric8.upload>true</fabric8.upload>
 	</properties>
 
