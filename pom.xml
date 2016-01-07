@@ -39,6 +39,7 @@
 	</properties>
 	<modules>
 		<module>camel-amq-request-reply</module>
+		<module>features</module>
 	</modules>
 	<dependencyManagement>
 		<dependencies>
@@ -140,7 +141,7 @@
         <distributionManagement>
                 <repository>
                         <id>maven-repository</id>
-                        <url>file:///home/mrobson/maven/</url>
+                        <url>file:///mnt/maven/</url>
                 </repository>
         </distributionManagement>
 </project>

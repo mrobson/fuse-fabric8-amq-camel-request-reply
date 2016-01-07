@@ -33,9 +33,9 @@
 	<properties>
 		<fabric8.profile>camel-request-reply</fabric8.profile>
 		<fabric8.parentProfiles>feature-camel</fabric8.parentProfiles>
-		<fabric8.featureRepos>mvn:org.mrobson.example.fabric8-amq/camel-request-reply/1.0-SNAPSHOT/xml/features</fabric8.featureRepos>
+		<fabric8.featureRepos>mvn:org.mrobson.example.fabric8-amq/features/1.0-SNAPSHOT/xml/features</fabric8.featureRepos>
 		<fabric8.baseVersion>1.0</fabric8.baseVersion>
-		<fabric8.profileVersion>1.1</fabric8.profileVersion>
+		<fabric8.profileVersion>1.0</fabric8.profileVersion>
 		<fabric8.features>fuse-fabric8-amq-camel-rr</fabric8.features>
 		<fabric8.includeArtifact>true</fabric8.includeArtifact>
 		<fabric8.upload>true</fabric8.upload>
@@ -68,12 +68,6 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<filtering>true</filtering>
-			</resource>
-		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.felix</groupId>
@@ -83,37 +77,9 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>filter</id>
-						<phase>generate-resources</phase>
-						<goals>
-							<goal>resources</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>attach-artifacts</id>
-						<phase>package</phase>
-						<goals>
-							<goal>attach-artifact</goal>
-						</goals>
-						<configuration>
-							<artifacts>
-								<artifact>
-									<file>target/classes/features.xml</file>
-									<type>xml</type>
-									<classifier>features</classifier>
-								</artifact>
-							</artifacts>
-						</configuration>
-					</execution>
-				</executions>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
