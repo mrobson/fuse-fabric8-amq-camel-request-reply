@@ -111,3 +111,13 @@ Once the profile loads, you will see it start to produce a message every second 
 	redhat.queue                                                 0           0           1        4728        4728           0
 
 Done!
+
+Notes: For the fabric8-maven-plugin plus localRepository approach to work correctly, there is a bug fix in 6.2.1 P1 required.
+
+	profile-edit --pid io.fabric8.maven/io.fabric8.maven.localRepository=/mnt/maven default
+
+	Set '-Daether.updateCheckManager.sessionState=bypass' for startup
+
+	profile-edit --pid io.fabric8.agent/org.ops4j.pax.url.mvn.repositories='file:${runtime.home}/${karaf.default.repository}@snapshots@id=karaf-default,file:${runtime.data}/maven/upload@snapshots@id=fabric-upload-remote@releasesUpdate=always@snapshotsUpdate=always,file:/mnt/maven@snapshots@id=nfs-maven@releasesUpdate=always@snapshotsUpdate=always' default
+
+	Bug for for fabric-maven-proxy @ ENTESB-4012
