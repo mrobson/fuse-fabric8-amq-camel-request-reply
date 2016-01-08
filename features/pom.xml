@@ -26,7 +26,7 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.mrobson.example.fabric8-amq</groupId>
-	<artifactId>feature</artifactId>
+	<artifactId>features</artifactId>
 	<packaging>pom</packaging>
 	<name>fabric8 AMQ :: Camel Request Reply Feature</name>
 

@@ -31,14 +31,14 @@
 	<name>fabric8 AMQ :: Camel Request Reply</name>
 
 	<properties>
-		<fabric8.profile>camel-request-reply</fabric8.profile>
+		<fabric8.profile>example-camel-requestreply</fabric8.profile>
 		<fabric8.parentProfiles>feature-camel</fabric8.parentProfiles>
 		<fabric8.featureRepos>mvn:org.mrobson.example.fabric8-amq/features/1.0-SNAPSHOT/xml/features</fabric8.featureRepos>
 		<fabric8.baseVersion>1.0</fabric8.baseVersion>
 		<fabric8.profileVersion>1.0</fabric8.profileVersion>
 		<fabric8.features>fuse-fabric8-amq-camel-rr</fabric8.features>
-		<fabric8.includeArtifact>true</fabric8.includeArtifact>
-		<fabric8.upload>true</fabric8.upload>
+		<fabric8.includeArtifact>false</fabric8.includeArtifact>
+		<fabric8.upload>false</fabric8.upload>
 	</properties>
 
 	<dependencies>
@@ -50,18 +50,6 @@
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-jms</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.activemq</groupId>
-			<artifactId>activemq-osgi</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.activemq</groupId>
-			<artifactId>activemq-client</artifactId>
-		</dependency>
-		<!--dependency>
-			<groupId>org.jboss.amq</groupId>
-			<artifactId>mq-fabric-camel</artifactId>
-		</dependency-->
 		<dependency>
 			<groupId>io.fabric8</groupId>
 			<artifactId>fabric-camel</artifactId>

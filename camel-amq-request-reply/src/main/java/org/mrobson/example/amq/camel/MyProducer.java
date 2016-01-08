@@ -27,6 +27,6 @@ import org.apache.camel.Exchange;
 public class MyProducer {
 	public void produce(Exchange exchange) {
 		String body = exchange.getIn().getBody(String.class);
-		exchange.getOut().setBody(body + " ? Asked at: " + new Date() + " \n");
+		exchange.getOut().setBody(body + " Asked at: " + new Date());
 	}
 }

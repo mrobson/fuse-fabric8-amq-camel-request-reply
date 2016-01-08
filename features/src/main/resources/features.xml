@@ -10,16 +10,10 @@
 	OR CONDITIONS OF ANY KIND, either express or implied. * See the License for 
 	the specific language governing permissions and * limitations under the License. 
 	*/ -->
-<features name="fuse-fabric8-amq-camel-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.0.0">
-	<repository>mvn:org.apache.camel.karaf/apache-camel/2.15.1.redhat-621084/xml/features</repository>
-	<repository>mvn:org.apache.activemq/activemq-karaf/5.11.0.redhat-621084/xml/features</repository>
-	<!--repository>mvn:io.fabric8/fabric8-karaf/1.0.0-SNAPSHOT/xml/features</repository-->
+<features name="fuse-fabric8-amq-camel-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.2.0">
 
-	<feature name="fuse-fabric8-amq-camel-rr">
-		<feature>camel-blueprint</feature>
-		<feature>camel-jms</feature>
-		<feature>fabric-camel</feature>
-		<feature>activemq-client</feature>
+	<feature name="fuse-fabric8-amq-camel-rr" version="${project.version}" resolver="(obr)">
+		<feature>activemq-camel</feature>
 		<feature>mq-fabric-camel</feature>
 		<bundle>mvn:org.mrobson.example.fabric8-amq/camel-request-reply/${project.version}</bundle>
 	</feature>

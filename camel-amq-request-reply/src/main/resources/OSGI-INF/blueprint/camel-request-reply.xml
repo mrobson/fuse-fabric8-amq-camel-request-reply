@@ -62,6 +62,7 @@
 					</transform>
 				</otherwise>
 			</choice>
+		<log message="${body}"/>
 	</route>
 </camelContext>
 <bean id="myProducer" class="org.mrobson.example.amq.camel.MyProducer" />

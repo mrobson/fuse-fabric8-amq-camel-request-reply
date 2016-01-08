@@ -27,6 +27,6 @@ import org.apache.camel.Exchange;
 public class MyConsumer {
     public void modify(Exchange exchange) {
     	String body = exchange.getIn().getBody(String.class);
-        exchange.getOut().setBody("My name is " + body + " \n");                                                                                                                                                                                         
+        exchange.getOut().setBody("My name is " + body);
     }
 }
