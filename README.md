@@ -101,14 +101,16 @@ Once the profile loads, you will see it start to produce a message every second 
 
 7) You can check the ActiveMQ statistics to see the brokers in action.
 
-	Fabric8:admin@amq-broker1> activemq:dstat 
-	Name                                                Queue Size  Producer #  Consumer #   Enqueue #   Dequeue #    Memory %
-	ActiveMQ.Advisory.Connection                                 0           0           0          11           0           0
-	ActiveMQ.Advisory.Consumer.Queue.redhat.queue                0           0           1           5           0           0
-	ActiveMQ.Advisory.MasterBroker                               0           0           0           1           0           0
-	ActiveMQ.Advisory.NetworkBridge                              0           0           0           3           0           0
-	ActiveMQ.Advisory.Queue                                      0           0           0           1           0           0
-	redhat.queue                                                 0           0           1        4728        4728           0
+	JBossFuse:karaf@root> activemq:dstat
+	Name                                                                        Queue Size  Producer #  Consumer #   Enqueue #   Dequeue #   Forward #
+	ActiveMQ.Advisory.Connection                                                0           0           0            45          0           0
+	ActiveMQ.Advisory.Consumer.Queue.com.redhat.incoming1                       0           0           0            15          0           0
+	ActiveMQ.Advisory.Consumer.Queue.com.redhat.service1                        0           0           0            15          0           0
+	ActiveMQ.Advisory.Consumer.Queue.com.redhat.service1.fuse-services1.reply   0           0           0            15          0           0
+	ActiveMQ.Advisory.MasterBroker                                              0           0           0            1           0           0
+	com.redhat.incoming1                                                        0           0           1            6887        6887        0
+	com.redhat.service1                                                         0           0           1            6887        6887        0
+	com.redhat.service1.fuse-services1.reply                                    0           0           1            6887        6887        0
 
 Done!
 
